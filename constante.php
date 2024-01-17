@@ -1,6 +1,6 @@
 <?php
-require_once("./class/LoadJSON.php");
-require_once("./class/Questionnaire.php");
+require_once("./model/Questionnaire.php");
+require_once("./model/Question.php");
 
 date_default_timezone_set('Europe/Paris');
 
