@@ -2,12 +2,12 @@
     require_once("./class/Question.php");
     require_once("./constante.php");
 
-    if (!isset($_POST)) {
+    if (!isset($_GET)) {
         header("Location: index.php");
         exit;
     }
 
-    $rep = $_POST;
+    $rep = $_GET;
 
     $questionnaire = array_filter($questionnaires_object, function ($questionnaire) {
         return $questionnaire->getLibelle() == $_GET['quizz'];

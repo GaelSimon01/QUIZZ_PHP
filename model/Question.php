@@ -1,7 +1,6 @@
 <?php
 
-require_once("./class/InputCheckBox.php");
-require_once("./class/InputRadio.php");
+namespace model;
 
 class Question
 {
@@ -38,7 +37,7 @@ class Question
     }
 
     public function get_answer(){
-        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1");
+        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1")->fetchAll()[0]['NomChoix'];
     }
 
     public function render($estDisable = false)
