@@ -12,3 +12,7 @@ try {
 } catch (\Throwable $th) {
     echo $th->getMessage();
 }
+
+
+$themes = $file_db->query('SELECT * FROM themes')->fetchAll();
+$questionnaires = $file_db->query('SELECT * FROM questionnaire')->fetchAll();

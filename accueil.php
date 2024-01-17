@@ -2,8 +2,6 @@
 
 require_once("./constante.php");
 
-$themes = $file_db->query('SELECT * FROM themes')->fetchAll(PDO::FETCH_KEY_PAIR);
-$questionnaires = $file_db->query('SELECT * FROM questionnaire');
 
 ?>
 
@@ -19,11 +17,11 @@ $questionnaires = $file_db->query('SELECT * FROM questionnaire');
 <body>
     <h1>Accueil</h1>
     <ul>
-        <?php foreach ($questionnaires as $row) : ?>
-            <li><?php echo $row['intitule'] ?>, theme : <?php echo $themes[$row['idTheme']] ?> <a href="#?quizz=<?php echo $row['intitule'] ?>">Faire le quizz</a></li>
+        <?php foreach ($questionnaires as $id => $questionnaire) : ?>
+            <li><?php echo $questionnaire['intitule'] ?>, theme : <?php echo $themes[$questionnaire['idTheme']] ?> <a href="#?quizz=<?php echo $questionnaire['intitule'] ?>">Faire le quizz</a></li>
         <?php endforeach; ?>
     </ul>
-    <button onclick="window.location.href='#'">Créer un questionnaire</button>
+    <button onclick="window.location.href='creation_questionnaire.php'">Créer un questionnaire</button>
     <button onclick="window.location.href='#'">Voir le leaderboard</button>
 </body>
 </html>
