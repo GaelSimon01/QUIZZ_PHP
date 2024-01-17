@@ -1,6 +1,6 @@
 <?php
 
-namespace model;
+
 
 class InputCheckBox extends Input
 {

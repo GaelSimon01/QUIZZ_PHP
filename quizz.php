@@ -1,6 +1,6 @@
 <?php
-    require_once("./class/Question.php");
-    require_once("./class/LoadJSON.php");
+    use model;
+    require_once("./model/Question.php");
     require_once("./constante.php");
 
     if (!isset($_GET['quizz'])) {

@@ -18,7 +18,7 @@ require_once("./constante.php");
     <h1>Accueil</h1>
     <ul>
         <?php foreach ($questionnaires_object as $id => $questionnaire) : ?>
-            <li><?php echo $questionnaire->getLibelle() ?>, theme : <?php echo $questionnaire->getTheme() ?> <a href="quizz.php?quizz=<?php echo $questionnaire->getLibelle() ?>">Faire le quizz</a></li>
+            <li><?php echo $questionnaire->getLibelle() ?>, theme : <?php echo $questionnaire->getTheme() ?> <a href="quizz.php?quizz=<?php echo $questionnaire->getLibelle() ?>">Faire le quizz</a><a href="leaderboard.php?Q=<?php echo $questionnaire->getLibelle() ?>"><button>acceder au score</button></a></li>
         <?php endforeach; ?>
     </ul>
     <button onclick="window.location.href='creation_questionnaire.php'">Créer un questionnaire</button>
