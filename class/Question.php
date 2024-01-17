@@ -1,5 +1,8 @@
 <?php
 
+require_once("./class/InputCheckBox.php");
+require_once("./class/InputRadio.php");
+
 class Question
 {
     private $id;
@@ -36,10 +39,7 @@ class Question
     {
         $res = "<fieldset><legend>" . $this->label . "</legend>";
         foreach ($this->choices[0] as $choice)
-            if ($estDisable)
-                $res .= "<label for=" . $choice . ">" . $choice . "</label><input id='" . $choice . "' type='" . $this->type . "' name='" . $this->id . "' value='" . $choice . "' disabled>";
-            else
-                $res .= "<label for=" . $choice . ">" . $choice . "</label><input id='" . $choice . "' type='" . $this->type . "' name='" . $this->id . "' value='" . $choice . "'>";
+            $res .= (new InputRadio($this->id, $this->label.$choice, $choice, $choice))->render($estDisable);
         return $res."</fieldset>";
     }
 

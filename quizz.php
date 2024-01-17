@@ -3,7 +3,12 @@
     require_once("./class/LoadJSON.php");
     require_once("./constante.php");
 
-    $rep = $_POST;
+    if (!isset($_GET['quizz'])) {
+        header("Location: accueil.php");
+        exit;
+    }
+
+    $questionnaire = $questionnaires[$_GET['quizz']];
 ?>
 
 <!DOCTYPE html>

@@ -30,6 +30,7 @@ require_once("./constante.php");
             <br>
             <label for="choix<?php echo $i ?>">Choix</label>
             <input type="text" name="choix<?php echo $i ?>" id="choix<?php echo $i ?>" required>
+        <?php endfor; ?>
     </form>
 </body>
 </html>

@@ -3,10 +3,14 @@
 
     class Questionnaire
     {
+        private $libelle;
+        private $theme;
         private $questions;
 
-        public function __construct($array)
+        public function __construct($libelle, $theme, $array)
         {
+            $this->libelle = $libelle;
+            $this->theme = $theme;
             $this->questions = array();
             foreach ($array as $question)
                 array_push($this->questions, $question);

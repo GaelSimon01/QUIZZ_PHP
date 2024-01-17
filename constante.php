@@ -1,8 +1,6 @@
 <?php
 require_once("./class/LoadJSON.php");
 require_once("./class/Questionnaire.php");
-$jsonLoader = new LoadJSON("./data/model.json");
-$questionnaire = new Questionnaire($jsonLoader->getQuestions());
 
 date_default_timezone_set('Europe/Paris');
 
@@ -16,3 +14,9 @@ try {
 
 $themes = $file_db->query('SELECT * FROM themes')->fetchAll();
 $questionnaires = $file_db->query('SELECT * FROM questionnaire')->fetchAll();
+$questionnaires_object = [];
+
+foreach ($questionnaires as $id => $questionnaire) {
+    $questionnaires[$questionnaire['intitule']] = new Questionnaire($questionnaire['intitule'], $questionnaire['idTheme'], $questionnaire['nbQuestions']);
+    unset($questionnaires[$id]);
+}
