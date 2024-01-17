@@ -7,12 +7,10 @@ require_once 'model/Questionnaire.php';
 
 date_default_timezone_set('Europe/Paris');
 
-try {
-    $file_db = new PDO('sqlite:./Quizz_bd.sqlite');
-    $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (\Throwable $th) {
-    echo $th->getMessage();
-}
+
+$file_db = new PDO('sqlite:./Quizz_bd.sqlite');
+$file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 
 
 $themes = $file_db->query('SELECT * FROM themes')->fetchAll();

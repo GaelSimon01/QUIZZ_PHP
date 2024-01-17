@@ -1,5 +1,6 @@
 <?php
 
+
 // namespace model;
 
 require_once("Input.php");
