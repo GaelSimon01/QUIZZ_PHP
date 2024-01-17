@@ -16,7 +16,3 @@ $themes = $file_db->query('SELECT * FROM themes')->fetchAll();
 $questionnaires = $file_db->query('SELECT * FROM questionnaire')->fetchAll();
 $questionnaires_object = [];
 
-foreach ($questionnaires as $id => $questionnaire) {
-    $questionnaires[$questionnaire['intitule']] = new Questionnaire($questionnaire['intitule'], $questionnaire['idTheme'], $questionnaire['nbQuestions']);
-    unset($questionnaires[$id]);
-}
