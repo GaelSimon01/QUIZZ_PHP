@@ -14,7 +14,7 @@ require_once("./constante.php");
 </head>
 <body>
     <h1>Création d'un questionnaire</h1>
-    <form action="#" method="get">
+    <form action="creation_questions.php" method="get">
         <label for="intitule">Intitulé du questionnaire</label>
         <input type="text" name="intitule" id="intitule" required>
         <br>

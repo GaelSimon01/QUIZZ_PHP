@@ -1,6 +1,6 @@
 <?php
 
-namespace model;
+require_once("Input.php");
 
 class InputRadio extends Input
 {

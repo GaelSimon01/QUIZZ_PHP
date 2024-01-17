@@ -1,7 +1,7 @@
 <?php
 
 
-namespace model;
+// namespace model;
 
 class Questionnaire
 {
