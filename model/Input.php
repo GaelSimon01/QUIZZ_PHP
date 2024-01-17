@@ -1,6 +1,7 @@
 <?php
+namespace model;
 
-namespace class;
+require_once "IRender.php";
 
 class Input implements IRender
 {

@@ -54,7 +54,7 @@ class Question
         if ($reponse == $this->get_answer())
             return "<span style='color:green'>Bonne réponse</span><br>";
         else
-            return "<span style='color:red'>Mauvaise réponse</span>, la bonne réponse était " . $this->answer;
+            return "<span style='color:red'>Mauvaise réponse</span>, la bonne réponse était " . "test";
     }
 
 }

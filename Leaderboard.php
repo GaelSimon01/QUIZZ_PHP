@@ -1,5 +1,5 @@
 <?php
-require_once("./model/constante.php");
+require_once("./constante.php");
 $intitule=$_GET["Q"];
 $scores=$file_db->query("select * from score where intitule='".$intitule."'")
 

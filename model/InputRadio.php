@@ -2,6 +2,7 @@
 
 namespace model;
 
+
 class InputRadio extends Input
 {
     public function __construct(string $name, string $id, string $label, string $value)
