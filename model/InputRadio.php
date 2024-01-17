@@ -10,6 +10,6 @@ class InputRadio extends Input
     }
     public function render($estDisable): string
     {
-        return sprintf('%s type="radio" />', parent::render($estDisable));
+        return sprintf('%s type="radio" class="form-check-input" /></div>', parent::render($estDisable));
     }
 }
