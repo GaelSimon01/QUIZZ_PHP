@@ -26,5 +26,11 @@
     ?>
     <a href="index.php">Refaire le quizz ?</a>
     <p>Votre score : <?php echo $questionnaire->get_score($rep) ?></p>
+    <form action="#" method="get">
+        <input type="hidden" name="score" value="<?php echo $questionnaire->get_score($rep) ?>">
+        <label for="nom">Votre nom :</label>
+        <input type="text" name="nom" id="nom">
+        <input type="submit" value="Enregistrer votre score ?">
+    </form>
 </body>
 </html>

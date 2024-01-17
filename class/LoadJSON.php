@@ -1,5 +1,6 @@
 <?php
     require_once("./class/Question.php");
+    require_once("./constante.php");
     class LoadJSON
     {
         private $json;
