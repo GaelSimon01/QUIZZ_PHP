@@ -8,6 +8,10 @@
     }
 
     $rep = $_POST;
+
+    $questionnaire = array_filter($questionnaires_object, function ($questionnaire) {
+        return $questionnaire->getLibelle() == $_GET['quizz'];
+    })[0]
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +25,7 @@
 <body>
     <h1>Voici le résultat du questionnaire</h1>
     <?php
-        foreach ($questionnaire->getQuestions() as $question) 
+        foreach ($questionnaire->getQuestions() as $question)
             echo $question->render(true) . "<br>" . $question->getResult($rep[$question->getId()]) . "<br>";
     ?>
     <a href="index.php">Refaire le quizz ?</a>

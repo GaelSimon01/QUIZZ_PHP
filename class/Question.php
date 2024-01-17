@@ -20,7 +20,7 @@ class Question
         $this->intitule = $intitule;
         $this->intituleQuestion = $intituleQuestion;
         $this->file_db = $file_db;
-        $this->choix = $this->file_db->query("select * from choix where idQ=".$this->idQ);
+        $this->choix = $this->file_db->query("select * from choix where idQ=".$this->idQ)->fetchAll();
     }
 
     public function getId()
@@ -37,18 +37,22 @@ class Question
         $this->file_db->query("select * from choix where idQ=".$this->idQ);
     }
 
+    public function get_answer(){
+        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1");
+    }
+
     public function render($estDisable = false)
     {
         $res = "<fieldset><legend>" . $this->intitule . "</legend>";
-        foreach ($this->choix[0] as $choice)
-            $res .= (new InputRadio($this->idQ, $this->intitule.$choice, $choice, $choice))->render($estDisable);
+        foreach ($this->choix as $id => $choice)
+            $res .= (new InputRadio($this->idQ, $this->intitule.$choice['NomChoix'], $choice['NomChoix'], $choice['NomChoix']))->render($estDisable);
         return $res."</fieldset>";
     }
 
     public function getResult($reponse) {
         if ($reponse == null)
             return "";
-        if ($reponse == $this->answer)
+        if ($reponse == $this->get_answer())
             return "<span style='color:green'>Bonne réponse</span><br>";
         else
             return "<span style='color:red'>Mauvaise réponse</span>, la bonne réponse était " . $this->answer;

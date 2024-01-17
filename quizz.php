@@ -8,7 +8,9 @@
         exit;
     }
 
-    $questionnaire = $questionnaires[$_GET['quizz']];
+    $questionnaire = array_filter($questionnaires_object, function ($questionnaire) {
+        return $questionnaire->getLibelle() == $_GET['quizz'];
+    })[0]
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,8 @@
 </head>
 <body>
     <h1>Répondez aux questions</h1>
-    <form action="result.php" method="post">
+    <form action="result.php" method="get">
+        <input type="hidden" name="quizz" value="<?php echo $questionnaire->getLibelle() ?>">
         <?php
         foreach ($questionnaire->getQuestions() as $question)
             echo $question->render();

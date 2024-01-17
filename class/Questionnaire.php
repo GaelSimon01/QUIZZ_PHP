@@ -16,6 +16,16 @@
                 array_push($this->questions, $question);
         }
 
+        public function getLibelle()
+        {
+            return $this->libelle;
+        }
+
+        public function getTheme()
+        {
+            return $this->theme;
+        }
+
         public function getQuestions()
         {
             return $this->questions;
@@ -25,7 +35,8 @@
         {
             $score = 0;
             foreach ($this->questions as $question)
-                if ($question->getAnswer() == $rep[$question->getId()])
+                echo var_dump($question->get_answer());
+                if ($question->get_answer() == $rep[$question->getId()])
                     $score++;
             return $score;
         }
