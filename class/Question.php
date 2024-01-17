@@ -2,45 +2,41 @@
 
 class Question
 {
-    private $id;
-    private $type;
-    private $label;
-    private $answer;
-    private $choices;
+    private $idQ;
+    private $idType;
+    private $intitule;
+    private $intituleQuestion;
+    private $file_db;
 
-    public function __construct($json)
+    private $choix;
+
+    public function __construct($file_db,$idQ,$idType,$intitule,$intituleQuestion)
     {
-        $this->id = $json["uuid"];
-        $this->type = $json["type"];
-        $this->label = $json["label"];
-        $this->choices = array($json["choices"]);
-        $this->answer = $json["correct"];
+        $this->idQ = $idQ;
+        $this->idType = $idType;
+        $this->intitule = $intitule;
+        $this->intituleQuestion = $intituleQuestion;
+        $this->file_db = $file_db;
+        $this->choix = $this->file_db->query("select * from choix where idQ=".$this->idQ);
     }
 
     public function getId()
     {
-        return $this->id;
+        return $this->idQ;
     }
 
-    public function getAnswer()
+    public function getIntitule()
     {
-        return $this->answer;
+        return $this->intitule;
     }
 
-    public function getLabel()
-    {
-        return $this->label;
+    public function get_choix(){
+        $this->file_db->query("select * from choix where idQ=".$this->idQ);
     }
 
-    public function render($estDisable = false)
+    public function render()
     {
-        $res = "<fieldset><legend>" . $this->label . "</legend>";
-        foreach ($this->choices[0] as $choice)
-            if ($estDisable)
-                $res .= "<label for=" . $choice . ">" . $choice . "</label><input id='" . $choice . "' type='" . $this->type . "' name='" . $this->id . "' value='" . $choice . "' disabled>";
-            else
-                $res .= "<label for=" . $choice . ">" . $choice . "</label><input id='" . $choice . "' type='" . $this->type . "' name='" . $this->id . "' value='" . $choice . "'>";
-        return $res."</fieldset>";
+        
     }
 
     public function getResult($reponse) {
