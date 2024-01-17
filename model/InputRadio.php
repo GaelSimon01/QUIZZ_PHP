@@ -1,7 +1,6 @@
 <?php
 
-
-
+require_once("Input.php");
 
 class InputRadio extends Input
 {

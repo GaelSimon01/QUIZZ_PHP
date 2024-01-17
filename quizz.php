@@ -1,5 +1,4 @@
 <?php
-    use model;
     require_once("./model/Question.php");
     require_once("./constante.php");
 
@@ -8,9 +7,10 @@
         exit;
     }
 
-    $questionnaire = array_filter($questionnaires_object, function ($questionnaire) {
-        return $questionnaire->getLibelle() == $_GET['quizz'];
-    })[0]
+    foreach ($questionnaires_object as $q) {
+        if ($q->getLibelle() == $_GET['quizz'])
+            $questionnaire = $q;
+    }
 ?>
 
 <!DOCTYPE html>

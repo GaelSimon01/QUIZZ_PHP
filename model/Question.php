@@ -1,6 +1,8 @@
 <?php
 
+// namespace model;
 
+require_once("InputRadio.php");
 
 class Question
 {
@@ -19,7 +21,7 @@ class Question
         $this->intitule = $intitule;
         $this->intituleQuestion = $intituleQuestion;
         $this->file_db = $file_db;
-        $this->choix = $this->file_db->query("select * from choix where idQ=".$this->idQ)->fetchAll();
+        $this->choix = $this->file_db->query("select * from choix where idQ=".$this->idQ." and intitule='".$intitule."'")->fetchAll();
     }
 
     public function getId()
@@ -29,7 +31,7 @@ class Question
 
     public function getIntitule()
     {
-        return $this->intitule;
+        return $this->intituleQuestion;
     }
 
     public function get_choix(){
@@ -37,12 +39,12 @@ class Question
     }
 
     public function get_answer(){
-        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1")->fetchAll()[0]['NomChoix'];
+        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1 and intitule='".$this->intitule."'")->fetchAll()[0]['NomChoix'];
     }
 
     public function render($estDisable = false)
     {
-        $res = "<fieldset><legend>" . $this->intitule . "</legend>";
+        $res = "<fieldset><legend>" . $this->intituleQuestion . "</legend>";
         foreach ($this->choix as $id => $choice)
             $res .= (new InputRadio($this->idQ, $this->intitule.$choice['NomChoix'], $choice['NomChoix'], $choice['NomChoix']))->render($estDisable);
         return $res."</fieldset>";
