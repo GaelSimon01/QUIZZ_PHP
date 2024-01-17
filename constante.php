@@ -3,9 +3,6 @@
 require_once "model/Questionnaire.php";
 require_once "model/Question.php";
 
-use model\Question;
-use model\Questionnaire;
-
 date_default_timezone_set('Europe/Paris');
 
 

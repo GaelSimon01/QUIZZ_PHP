@@ -1,5 +1,4 @@
 <?php
-namespace model;
 
 require_once "IRender.php";
 
