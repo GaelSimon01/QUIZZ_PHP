@@ -15,19 +15,23 @@ $scores=$file_db->query("select * from score where intitule='".$intitule."' grou
     <title>Questionnaire</title>
 </head>
 <body>
-    <h1>Leaderboard</h1>
-    <div class="wrapper">
-    <table>
-        <tr>
-        <th>pseudo</th>
-        <th>points</th>
-        </tr>
-        <?php
-        foreach($scores as $score){
-            echo "<tr><td>".$score["nomJoueur"]."</td><td>".$score["point"]."</td></tr>";
-        }
-        ?>
-    </table>
+    <div class="container-sm mt-5 pt-5">
+        <h1 class="text-center mb-5">Leaderboard</h1>
+        <div class="wrapper">
+        <table>
+            <tr>
+            <th>pseudo</th>
+            <th>points</th>
+            </tr>
+            <?php
+            foreach($scores as $score){
+                echo "<tr><td>".$score["nomJoueur"]."</td><td>".$score["point"]."</td></tr>";
+            }
+            ?>
+        </table>
+        </div>
     </div>
+
+    <?php require_once("bootstrap.php"); ?>
 </body>
 </html>
