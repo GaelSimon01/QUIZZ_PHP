@@ -1,8 +1,9 @@
 <?php
 
-// namespace model;
+namespace model;
 
-require_once("InputRadio.php");
+// require_once("InputRadio.php");
+// require_once("InputCheckBox.php");
 
 class Question
 {
@@ -39,24 +40,41 @@ class Question
     }
 
     public function get_answer(){
-        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1 and intitule='".$this->intitule."'")->fetchAll()[0]['NomChoix'];
+        return $this->file_db->query("select * from choix where idQ=".$this->idQ." and reponse=1 and intitule='".$this->intitule."'")->fetchAll();
     }
 
     public function render($estDisable = false)
     {
-        $res = "<fieldset><legend>" . $this->intituleQuestion . "</legend>";
-        foreach ($this->choix as $id => $choice)
-            $res .= (new InputRadio($this->idQ, $this->intitule.$choice['NomChoix'], $choice['NomChoix'], $choice['NomChoix']))->render($estDisable);
-        return $res."</fieldset>";
+        if (count($this->get_answer()) == 1) {
+            $res = "<fieldset><legend>" . $this->intituleQuestion . "</legend>";
+            foreach ($this->choix as $id => $choice)
+                $res .= (new InputRadio($this->idQ, $this->intitule.$choice['NomChoix'], $choice['NomChoix'], $choice['NomChoix']))->render($estDisable);
+            return $res."</fieldset>";
+        }
+        if (count($this->get_answer()) > 1) {
+            $res = "<fieldset><legend>" . $this->intituleQuestion . "</legend>";
+            foreach ($this->choix as $id => $choice)
+                $res .= (new InputCheckBox($this->idQ, $this->intitule.$choice['NomChoix'], $choice['NomChoix'], $choice['NomChoix']))->render($estDisable);
+            return $res."</fieldset>";
+        }
     }
 
-    public function getResult($reponse) {
-        if ($reponse == null)
+    public function getResult($reponses) {
+        if ($reponses == null)
             return "";
-        if ($reponse == $this->get_answer())
+        $a_bon = true;
+        $answer = [];
+        foreach ($this->get_answer() as $ans)
+            array_push($answer, array_shift($ans));
+        foreach ($answer as $ans) {
+            if (!in_array($ans, $reponses))
+                $a_bon = false;
+        }
+
+        if ($a_bon)
             return "<span style='color:green'>Bonne réponse</span><br>";
         else
-            return "<span style='color:red'>Mauvaise réponse</span>, la bonne réponse était " . "test";
+            return "<span style='color:red'>Mauvaise réponse</span><br>";
     }
 
 }

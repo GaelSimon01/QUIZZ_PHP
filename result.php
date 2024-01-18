@@ -1,5 +1,4 @@
 <?php
-    require_once("./model/Question.php");
     require_once("./constante.php");
 
     if (!isset($_GET)) {

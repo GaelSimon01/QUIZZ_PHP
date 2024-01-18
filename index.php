@@ -1,6 +1,6 @@
 <?php 
 
-require_once("./constante.php");
+require_once("constante.php");
 
 
 ?>
@@ -26,13 +26,13 @@ require_once("./constante.php");
                 <li class="list-group-item">
                     <?php echo $questionnaire->getLibelle() ?>, theme : <?php echo $theme["nomTheme"] ?> 
                     <div class="btn-group">
-                        <a href="quizz.php?quizz=<?php echo $questionnaire->getLibelle() ?>" class="btn btn-sm btn-primary">Faire le quizz</a>
-                        <a href="leaderboard.php?Q=<?php echo $questionnaire->getLibelle() ?>" class="btn btn-sm btn-secondary">Acceder au score</a>
+                        <a href="./quizz.php?quizz=<?php echo $questionnaire->getLibelle() ?>" class="btn btn-sm btn-primary">Faire le quizz</a>
+                        <a href="./leaderboard.php?Q=<?php echo $questionnaire->getLibelle() ?>" class="btn btn-sm btn-secondary">Acceder au score</a>
                     </div>
                 </li>
             <?php endforeach; ?>
         </ul>
-        <button onclick="window.location.href='creation_questionnaire.php'" class="btn btn-sm btn-success">Créer un questionnaire</button>
+        <button onclick="window.location.href='./creation_questionnaire.php'" class="btn btn-sm btn-success">Créer un questionnaire</button>
     </div>
     <?php require_once("bootstrap.php"); ?>
 </body>

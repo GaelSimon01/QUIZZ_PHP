@@ -1,6 +1,6 @@
 <?php 
 
-// namespace model;
+namespace model;
 
 interface IRender
 {
