@@ -1,7 +1,7 @@
 <?php
 
 
-
+namespace model;
 
 class Questionnaire
 {
@@ -37,7 +37,15 @@ class Questionnaire
     {
         $score = 0;
         foreach ($this->questions as $question)
-            if ($question->get_answer() == $rep[$question->getId()])
+            $a_bon = true;
+            $answer = [];
+            foreach ($question->get_answer() as $ans)
+                array_push($answer, array_shift($ans));
+            foreach ($answer as $ans) {
+                if (!in_array($ans, $rep[$question->getId()]))
+                    $a_bon = false;
+            }
+            if ($a_bon)
                 $score++;
         return $score;
     }

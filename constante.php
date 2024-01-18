@@ -1,14 +1,14 @@
 <?php
 
-require_once 'model/Question.php';
-require_once 'model/Questionnaire.php';
 
-// use model\{Questionnaire, Question};
+include_once 'model/Autoloader.php';
+model\AutoLoader::register();
+use model\{Questionnaire, Question};
 
 date_default_timezone_set('Europe/Paris');
 
 
-$file_db = new PDO('sqlite:./Quizz_bd.sqlite');
+$file_db = new PDO('sqlite:./data/Quizz_bd.sqlite');
 $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
