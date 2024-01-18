@@ -1,9 +1,10 @@
 <?php
 
 
-// namespace model;
+namespace model;
+use model\Input;
 
-require_once("Input.php");
+// require_once("Input.php");
 
 class InputCheckBox extends Input
 {

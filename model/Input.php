@@ -1,6 +1,9 @@
 <?php
 
-require_once "IRender.php";
+// require_once "IRender.php";
+
+namespace model;
+use model\IRender;
 
 class Input implements IRender
 {
@@ -18,6 +21,6 @@ class Input implements IRender
     }
     public function render($estDisable): string
     {
-        return sprintf('<label for="%s">%s</label><input name="%s" id="%s" value="%s" %s', $this->id, $this->label, $this->name, $this->id, $this->value, $estDisable ? "disabled" : "");
+        return sprintf('<div class="form-check form-check-inline"><label for="%s" class="form-check-label">%s</label><input name="%s[]" id="%s" value="%s" %s', $this->id, $this->label, $this->name, $this->id, $this->value, $estDisable ? "disabled" : "");
     }
 }
