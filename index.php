@@ -2,6 +2,7 @@
 
 require_once("constante.php");
 
+session_start();
 
 ?>
 

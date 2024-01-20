@@ -1,4 +1,7 @@
 <?php
+
+    session_start();
+
     require_once("./constante.php");
 
     if (!isset($_GET)) {
@@ -38,7 +41,11 @@
             <div class="row">
                 <div class="col">
                     <div class="form-floating mb-3">
-                        <input type="text" name="prenom" id="prenom" class="form-control" required>
+                        <?php if (isset($_SESSION['nom'])): ?>
+                            <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $_SESSION['nom'] ?>" required>
+                        <?php else: ?>
+                            <input type="text" name="prenom" id="prenom" class="form-control" required>
+                        <?php endif; ?>
                         <label for="prenom">Votre prénom :</label>
                     </div>
                 </div>
